@@ -1,0 +1,87 @@
+@use "../abstract/" as *;
+@use "../base/" as *;
+@use "../component/" as *;
+@use "../layout/" as *;
+@use "../vendor/" as *;
+
+.banner{
+    img{
+        @include imgCover(300px, 100%)
+    }
+    p{
+        display: none;
+    }
+
+    @include mediaQuery{
+        &__wrapper{
+            @include unevenGrid(2fr 1fr, 5rem)
+        }
+
+        &__main{
+            padding-right: 2rem;
+            border-right: 1px solid $clr-dark;
+            img{
+                height: 50rem;
+            }
+        }
+
+        &__side{
+            img{
+                height: 20rem;
+            }
+            p{
+                display: none !important;
+            }
+        }
+
+        p{
+            display: block;
+        }
+    }
+}
+
+
+.articles{
+    @include mediaQuery{
+        &__card{
+            @include flex;
+            gap: 5rem;
+            margin-bottom: 2rem;
+        }
+    }
+}
+
+.cta{
+    border-top: 1px solid $clr-dark;
+    border-bottom: 1px solid $clr-dark;
+    padding: 4rem 0;
+
+    ul{
+        @include flex(center, center);
+        flex-direction: column;
+        @include mediaQuery{
+            flex-direction: row;
+            gap: 3rem;
+        }
+    }
+
+    li{
+        width: 100%;
+        @include mediaQuery{
+            width: auto;
+        }
+    }
+
+    a{
+        min-width: 120px;
+        padding: 2rem;
+        background: $clr-dark;
+        color: $clr-light;
+        font-size: 1.2rem;
+        display: block;
+        margin-bottom: 1rem;
+        @include mediaQuery{
+            display: inline-block;
+        }
+    }
+}
